@@ -17,11 +17,8 @@ int main(int argc , char **argv) {
             // เช็คก่อนว่ามีของในคิวไหม
             if(q.size > 0) { 
                 x = dequeue_struct(&q);
-                // ⚠️ แก้ตรงนี้: ตัดตัว 'u' ออก ให้เหมือนต้นฉบับ
                 printf("dequeing %d\n", x); 
             } else {
-                // เช็คว่าระบบต้องการ Empty queue เฉยๆ หรือมีอะไรต่อท้าย
-                // ปกติใช้แบบนี้ครับ
                 printf("Empty queue\n");
             }
         } 
