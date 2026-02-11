@@ -2,30 +2,31 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Node.h"
-
 #include "Queue.h"
 
 int main(int argc , char **argv) {
-  NodePtr headPtr=NULL;
-   NodePtr tailPtr=NULL;
-/* For struct Queue
-  Queue  q;
-   q. headPtr=NULL;
-   q.tailPtr=NULL;
-   q.size=0;
-*/
-   int i,x;
-   
+    Queue q;
+    q.headPtr = NULL;
+    q.tailPtr = NULL;
+    q.size = 0;
 
- for(i=1;i<argc;i++){
-        if(strcmp(argv[i],"x")==0){
-            x=dequeue(&headPtr,&tailPtr);
-            printf("dequeing %d\n",x);
-        }
+    int i, x;
+
+    for(i = 1; i < argc; i++) {
+        if(strcmp(argv[i], "x") == 0) {
+            // เช็คก่อนว่ามีของในคิวไหม
+            if(q.size > 0) { 
+                x = dequeue_struct(&q);
+                printf("dequeuing %d\n", x);
+            } else {
+                printf("Empty queue\n");
+            }
+        } 
         else {
-       enqueue_struct(&headPtr,&tailPtr, atoi(argv[i]));
-           
+            // ถ้าไม่ใช่ "x" ให้เปลี่ยนเป็นตัวเลขแล้ว enqueue
+            enqueue_struct(&q, atoi(argv[i]));
         }
- }
-  return 0;
+    } // ปิดลูป for แค่ตรงนี้พอ
+    
+    return 0;
 }
